@@ -2,15 +2,13 @@ const express = require("express");
 const mongoose = require("mongoose");
 
 const userRouter = require("./routes/user-routes");
+require("dotenv").config();
 
 mongoose
-  .connect(
-    "mongodb+srv://sreenivasulus097:p0ZI9tYDdPMM2Ej9@cluster0.zakmqna.mongodb.net/matrimonydb?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.mongodb_connect_url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => app.listen(5000))
   .then(() => {
     console.log(
